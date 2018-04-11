@@ -69,4 +69,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void clearEditText() {
         editText.setText(EMPTY_STRING);
     }
+
+    @Override
+    public void scrollRecyclerViewToBottom() {
+        recyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);
+    }
 }

@@ -11,6 +11,9 @@ public interface MainContract {
         void addMessageToRecyclerView(MessageModel messageModel);
 
         void clearEditText();
+
+        void scrollRecyclerViewToBottom();
+
     }
 
     interface Presenter{

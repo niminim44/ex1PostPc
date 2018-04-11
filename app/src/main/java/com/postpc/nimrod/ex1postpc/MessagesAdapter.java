@@ -25,7 +25,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.setData(messages.get(position).getMessage());
+        MessageModel message = messages.get(position);
+        holder.setData(message.getMessage(), message.getTimeStamp());
     }
 
     @Override
@@ -43,13 +44,17 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         @BindView(R.id.message_text_view)
         TextView messageTextView;
 
+        @BindView(R.id.time_stamp_text_view)
+        TextView timeStampTextView;
+
         ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        public void setData(String message) {
+        void setData(String message, String timeStamp) {
             messageTextView.setText(message);
+            timeStampTextView.setText(timeStamp);
         }
     }
 }
