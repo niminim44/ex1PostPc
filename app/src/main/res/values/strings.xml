@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ex1 Post PC</string>
+    <string name="message_hint">Put Your Message Here...</string>
+    <string name="send_button_description">SEND_BUTTON</string>
 </resources>
