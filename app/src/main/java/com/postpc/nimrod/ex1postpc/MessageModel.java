@@ -2,8 +2,8 @@ package com.postpc.nimrod.ex1postpc;
 
 class MessageModel {
 
-    String message;
-    String timeStamp;
+    private String message;
+    private String timeStamp;
 
     MessageModel(String message, String timeStamp) {
         this.message = message;

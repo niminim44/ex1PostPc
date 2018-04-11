@@ -1,18 +1,14 @@
 package com.postpc.nimrod.ex1postpc;
 
-import android.annotation.SuppressLint;
-
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 class MainPresenter implements MainContract.Presenter{
 
-    @SuppressLint("SimpleDateFormat")
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("HH.mm");
-
-
+    private static final String TIME_STAMP_FORMAT = "HH:mm";
+    private static final SimpleDateFormat sdf = new SimpleDateFormat(TIME_STAMP_FORMAT);
     static final String EMPTY_STRING = "";
+
     private final MainContract.View view;
 
     MainPresenter(MainContract.View view) {

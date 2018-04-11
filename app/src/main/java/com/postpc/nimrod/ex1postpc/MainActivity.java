@@ -54,10 +54,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public String getEditTextMessage() {
         Editable editable = editText.getText();
-        if(editable != null){
-            return editable.toString();
-        }
-        return EMPTY_STRING;
+        return (editable != null) ? editable.toString() : EMPTY_STRING;
     }
 
     @Override
