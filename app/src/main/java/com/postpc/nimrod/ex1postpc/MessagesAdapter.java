@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -36,7 +38,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
     public void addMessage(MessageModel messageModel) {
         messages.add(messageModel);
-        notifyDataSetChanged();
+        notifyItemInserted(messages.size() - 1);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
