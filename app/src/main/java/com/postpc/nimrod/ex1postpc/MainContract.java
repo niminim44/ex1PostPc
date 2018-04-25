@@ -14,6 +14,9 @@ public interface MainContract {
 
         void scrollRecyclerViewToBottom();
 
+        void deleteMessageFromAdapter(int position);
+
+        void shareMessage(String message);
     }
 
     interface Presenter{
@@ -21,6 +24,10 @@ public interface MainContract {
         void init();
 
         void handleSendClicked();
+
+        void handleDeleteClicked(int position);
+
+        void handleShareClicked(String message);
     }
 
 }

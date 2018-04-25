@@ -24,10 +24,20 @@ class MainPresenter implements MainContract.Presenter{
     public void handleSendClicked() {
         String message = view.getEditTextMessage();
         if((message != null) && (!message.equals(EMPTY_STRING))){
-            view.addMessageToRecyclerView(new MessageModel(message, getCurrentTimeInString()));
+            view.addMessageToRecyclerView(new MessageModel(message, getCurrentTimeInString(), "You"));
         }
         view.clearEditText();
         view.scrollRecyclerViewToBottom();
+    }
+
+    @Override
+    public void handleDeleteClicked(int position) {
+        view.deleteMessageFromAdapter(position);
+    }
+
+    @Override
+    public void handleShareClicked(String message) {
+        view.shareMessage(message);
     }
 
     private String getCurrentTimeInString() {

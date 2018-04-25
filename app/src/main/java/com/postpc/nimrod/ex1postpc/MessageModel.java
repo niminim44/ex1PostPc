@@ -1,13 +1,20 @@
 package com.postpc.nimrod.ex1postpc;
 
-class MessageModel {
+public class MessageModel {
 
+    private final String author;
     private String message;
     private String timeStamp;
+    private int position;
 
-    MessageModel(String message, String timeStamp) {
+    public MessageModel(String message, String timeStamp, String author) {
         this.message = message;
         this.timeStamp = timeStamp;
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     public String getMessage() {
@@ -16,5 +23,13 @@ class MessageModel {
 
     public String getTimeStamp() {
         return timeStamp;
+    }
+
+    public void setPosition(int position){
+        this.position = position;
+    }
+
+    public int getPosition(){
+        return position;
     }
 }

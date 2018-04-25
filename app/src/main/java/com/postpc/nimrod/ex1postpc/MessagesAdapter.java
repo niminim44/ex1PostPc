@@ -6,6 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.postpc.nimrod.ex1postpc.events.MessageLongClickedEvent;
+
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,7 +32,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         MessageModel message = messages.get(position);
-        holder.setData(message.getMessage(), message.getTimeStamp());
+        holder.setData(messages.get(position), position);
     }
 
     @Override
@@ -41,6 +45,11 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         notifyItemInserted(messages.size() - 1);
     }
 
+    public void removeItem(int position) {
+        messages.remove(position);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.message_text_view)
@@ -49,14 +58,31 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         @BindView(R.id.time_stamp_text_view)
         TextView timeStampTextView;
 
+        private MessageModel messageModel;
+        private int position;
+
         ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    handleLongClickEvent();
+                    return false;
+                }
+            });
         }
 
-        void setData(String message, String timeStamp) {
-            messageTextView.setText(message);
-            timeStampTextView.setText(timeStamp);
+        private void handleLongClickEvent() {
+            messageModel.setPosition(position);
+            EventBus.getDefault().post(new MessageLongClickedEvent(messageModel));
+        }
+
+        void setData(MessageModel messageModel, int position) {
+            this.messageModel = messageModel;
+            this.position = position;
+            messageTextView.setText(messageModel.getMessage());
+            timeStampTextView.setText(messageModel.getTimeStamp());
         }
     }
 }
