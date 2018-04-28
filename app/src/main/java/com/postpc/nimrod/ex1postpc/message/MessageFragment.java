@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.postpc.nimrod.ex1postpc.MessageModel;
@@ -95,5 +96,10 @@ public class MessageFragment extends Fragment implements MessageContract.View{
     @OnClick(R.id.share_button)
     public void onShareClicked(){
         presenter.onShareClicked();
+    }
+
+    @OnClick(R.id.back_button)
+    public void onBackButtonClicked(){
+        getActivity().onBackPressed();
     }
 }
